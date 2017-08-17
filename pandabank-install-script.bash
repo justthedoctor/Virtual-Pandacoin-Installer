@@ -59,4 +59,4 @@ sleep 5s
 su - $sudousername -c "chmod +x ~/pandacoin/src/leveldb/build_detect_platform"
 su - $sudousername -c "cd ~/pandacoin/ && qmake && make"
 su - $sudousername -c "cp ~/pandacoin/pandacoin-qt ~/Desktop/PandaBank"
-echo -e "${YELLOW}${BOLD} Installation Successful, 
+echo -e "${YELLOW}${BOLD} Installation Successful${NC}"
