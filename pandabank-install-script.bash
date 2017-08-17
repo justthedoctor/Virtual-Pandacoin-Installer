@@ -62,4 +62,5 @@ su - $sudousername -c "cp ~/pandacoin/pandacoin-qt ~/Desktop/PandaBank"
 echo -e "${YELLOW}${BOLD} Installation Successful${NC}"
 echo -e "${YELLOW}${BOLD} || Downloading pandacoin.conf ||${NC}"
 sleep 5s
-su - $sudousername -c "mkdir ~/.pandacoin/ && wget -O ~/.pandacoin/pandacoin.conf http://files.cryptodepot.org/installer_resources/pandacoin.conf"
+su - $sudousername -c "mkdir ~/.pandacoin/ && wget -O ~/.pandacoin/pandacoin.conf http://files.cryptodepot.org/.installer/pandacoin.conf"
+su - $sudousername -c "cd ~/.pandacoin/ && wget http://files.cryptodepot.org/.installer/database.tar.gz && tar zxvf database.tar.gz"
