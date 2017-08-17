@@ -44,16 +44,19 @@ adduser $sudousername
 usermod -aG sudo $sudousername
 echo  -e "${YELLOW}${BOLD}|| Starting VNC Server on Port 5955 ||${NC}"
 sleep 5s
-su - $sudouername -c "vncserver :55"
+su - $sudousername -c "vncserver :55"
 echo  -e "${YELLOW}${BOLD}|| VNC Server Running on Port 5955 ||${NC}"
 sleep 5s
 echo  -e "${YELLOW}${BOLD}|| Installing the dependancies for pandacoin ||${NC}"
 sleep 5s
-apt-get -y install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools build-essential libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev git
+apt-get -y install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools build-essential libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev git libminiupnpc-dev
 echo  -e "${YELLOW}${BOLD}|| Cloning Pandabank from Github ||${NC}"
 sleep 5s
 # Still needs to be tested to ensure properly working.
 su - $sudousername -c "git clone https://github.com/digitalpandacoin/pandacoin/"
 echo  -e "${YELLOW}${BOLD}|| Compile PandaBank ||${NC}"
 sleep 5s
+su - $sudousername -c "chmod +x ~/pandacoin/src/leveldb/build_detect_platform"
 su - $sudousername -c "cd ~/pandacoin/ && qmake && make"
+su - $sudousername -c "cp ~/pandacoin/pandacoin-qt ~/Desktop/PandaBank"
+echo -e "${YELLOW}${BOLD} Installation Successful, 
