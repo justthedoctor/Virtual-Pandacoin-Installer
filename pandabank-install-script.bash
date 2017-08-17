@@ -60,3 +60,6 @@ su - $sudousername -c "chmod +x ~/pandacoin/src/leveldb/build_detect_platform"
 su - $sudousername -c "cd ~/pandacoin/ && qmake && make"
 su - $sudousername -c "cp ~/pandacoin/pandacoin-qt ~/Desktop/PandaBank"
 echo -e "${YELLOW}${BOLD} Installation Successful${NC}"
+echo -e "${YELLOW}${BOLD} || Downloading pandacoin.conf ||${NC}"
+sleep 5s
+su - $sudousername -c "mkdir ~/.pandacoin/ && wget -O ~/.pandacoin/pandacoin.conf http://files.cryptodepot.org/installer_resources/pandacoin.conf"
