@@ -1,6 +1,6 @@
 #!/bin/bash
-# Currently working for Debian 8, Will be tested agesnt other distro's for compatablity. 
 # Digital Pandacoin Development Team Presents Virtual PandaBank Installer
+# Currently working for Debian 8, Will be tested agesnt other distro's for compatablity. 
 BLACK='\e[0;30m'
 BLUE='\e[0;34m'
 GREEN='\e[0;32m'
@@ -63,4 +63,8 @@ echo -e "${YELLOW}${BOLD} Installation Successful${NC}"
 echo -e "${YELLOW}${BOLD} || Downloading pandacoin.conf ||${NC}"
 sleep 5s
 su - $sudousername -c "mkdir ~/.pandacoin/ && wget -O ~/.pandacoin/pandacoin.conf http://files.cryptodepot.org/.installer/pandacoin.conf"
+echo -e "${YELLOW}${BOLD} || Downloading & Installing most recent Blockchain ||${NC}"
+sleep 5s
 su - $sudousername -c "cd ~/.pandacoin/ && wget http://files.cryptodepot.org/.installer/database.tar.gz && tar zxvf database.tar.gz"
+su - $sudousername -c "rm -rf ~/.pandacoin/database.tar.gz"
+echo -e "${YELLOW}%{BOLD} || Completed Enjoy your Virtual PandaBank, for further help please email: justthedoctor.931@gmail.com${NC}"
