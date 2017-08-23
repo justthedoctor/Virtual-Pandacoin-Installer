@@ -110,5 +110,7 @@ echo 'User=vnc' >> /lib/systemd/system/myvncserver.service
 echo '' >> /lib/systemd/system/myvncserver.service
 echo '[Install]' >> /lib/systemd/system/myvncserver.service
 echo 'WantedBy=multi-user.target' >> /lib/systemd/system/myvncserver.service
+systemctl daemon-reload
+systemctl enable myvncserver.service
 echo -e "${YELLOW}%{BOLD} || Completed Enjoy your Virtual PandaBank, for further help please email: justthedoctor.931@gmail.com${NC}"
 
