@@ -1,6 +1,9 @@
 #!/bin/bash
 # Digital Pandacoin Development Team Presents Virtual PandaBank Installer
 # Currently working for Debian 8, Will be tested agesnt other distro's for compatablity. 
+
+
+## The Following is font properties.
 BLACK='\e[0;30m'
 BLUE='\e[0;34m'
 GREEN='\e[0;32m'
@@ -36,7 +39,7 @@ echo  -e "${YELLOW}${BOLD}|| Upgrading Distro ||${NC}"
 apt-get -y dist-upgrade
 sleep 5s
 echo  -e "${YELLOW}${BOLD}|| Installing xfce4 Desktop Enviroment and Tight VNC Server ||${NC}"
-apt-get -y install task-xfce-desktop nano xfce4-goodies tightvncserver sudo
+apt-get -y install task-xfce-desktop nano xfce4-goodies tightvncserver sudo autocutsel
 echo  -e "${YELLOW}${BOLD}|| Creating Sudo User account||${NC}"
 sleep 5s
 read -p "Enter Desired Sudo Username: " sudousername
@@ -45,11 +48,15 @@ usermod -aG sudo $sudousername
 echo  -e "${YELLOW}${BOLD}|| Starting VNC Server on Port 5955 ||${NC}"
 sleep 5s
 su - $sudousername -c "vncserver :55"
+su - $sudousername -v "vncserver -kill :55"
+echo 'export XKL_XMODMAP_DISABLE=1' >> ~/.vnc/xstartup
+echo 'autocutsel -fork' >> ~/.vnc/xstartup
+su - $sudousername -c "vncserver :55"
 echo  -e "${YELLOW}${BOLD}|| VNC Server Running on Port 5955 ||${NC}"
 sleep 5s
 echo  -e "${YELLOW}${BOLD}|| Installing the dependancies for pandacoin ||${NC}"
 sleep 5s
-apt-get -y install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools build-essential libboost-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev git libminiupnpc-dev
+apt-get -y install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools build-essential libboost-dev libboost-all-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev git libminiupnpc-dev libboost1.55*
 echo  -e "${YELLOW}${BOLD}|| Cloning Pandabank from Github ||${NC}"
 sleep 5s
 # Still needs to be tested to ensure properly working.
