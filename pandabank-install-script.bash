@@ -48,7 +48,7 @@ usermod -aG sudo $sudousername
 echo  -e "${YELLOW}${BOLD}|| Starting VNC Server on Port 5955 ||${NC}"
 sleep 5s
 su - $sudousername -c "vncserver :55"
-su - $sudousername -v "vncserver -kill :55"
+su - $sudousername -c "vncserver -kill :55"
 echo 'export XKL_XMODMAP_DISABLE=1' >> ~/.vnc/xstartup
 echo 'autocutsel -fork' >> ~/.vnc/xstartup
 su - $sudousername -c "vncserver :55"
@@ -64,7 +64,6 @@ echo  -e "${YELLOW}${BOLD}|| Compile PandaBank ||${NC}"
 sleep 5s
 su - $sudousername -c "chmod +x ~/pandacoin/src/leveldb/build_detect_platform"
 su - $sudousername -c "cd ~/pandacoin/ && qmake && make"
-su - $sudousername -c "cp ~/pandacoin/pandacoin-qt ~/Desktop/PandaBank"
 echo -e "${YELLOW}${BOLD} Installation Successful${NC}"
 echo -e "${YELLOW}${BOLD} || Downloading pandacoin.conf ||${NC}"
 sleep 5s
@@ -73,6 +72,7 @@ echo -e "${YELLOW}${BOLD} || Downloading & Installing most recent Blockchain ||$
 sleep 5s
 su - $sudousername -c "cd ~/.pandacoin/ && wget http://files.cryptodepot.org/.installer/database.tar.gz && tar zxvf database.tar.gz"
 su - $sudousername -c "rm -rf ~/.pandacoin/database.tar.gz"
+su - $sudousername -c "cp ~/pandacoin/pandacoin-qt ~/Desktop/PandaBank"
 # Still needs to be tested to ensure properly working.
 echo '' >> /usr/local/bin/myvncserver
 echo '#!/bin/bash' >> /usr/local/bin/myvncserver
