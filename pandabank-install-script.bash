@@ -49,8 +49,8 @@ echo  -e "${YELLOW}${BOLD}|| Starting VNC Server on Port 5955 ||${NC}"
 sleep 5s
 su - $sudousername -c "vncserver :55"
 su - $sudousername -c "vncserver -kill :55"
-echo 'export XKL_XMODMAP_DISABLE=1' >> ~/.vnc/xstartup
-echo 'autocutsel -fork' >> ~/.vnc/xstartup
+su - $sudousername echo 'export XKL_XMODMAP_DISABLE=1' >> ~/.vnc/xstartup
+su - $sudousername echo 'autocutsel -fork' >> ~/.vnc/xstartup
 su - $sudousername -c "vncserver :55"
 echo  -e "${YELLOW}${BOLD}|| VNC Server Running on Port 5955 ||${NC}"
 sleep 5s
